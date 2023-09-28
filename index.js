@@ -19,7 +19,10 @@ function KareninAlani(kenaruzunlugu){
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
+const kenarUzunlugu = 10;
+const alan = KareninAlani(kenarUzunlugu);
 
+console.log("Karenin Alani:", alan);
 
 /* 	GÖREV 1:  
 		- CemberinCevresi fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -29,13 +32,15 @@ function KareninAlani(kenaruzunlugu){
 			4. Hesaplanan çemberin çevresi döndürülecektir.
 		*/
 
-function CemberinCevresi(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinCevresi(yaricap){
+	const cevre = 2 * pi * yaricap;
+	return cevre
 }
 
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
+console.log("Cemberin Cevresi:", CemberinCevresi(5));
 
 
 
@@ -47,13 +52,15 @@ function CemberinCevresi(/* kodlar buraya */){
 			4. Hesaplanan çemberin alanı döndürülecektir.
 		*/
 		
-function CemberinAlani(/* kodlar buraya */){
-	/* kodlar buraya */
+function CemberinAlani(yaricap, pi){
+	const alan = pi * Math.pow(yaricap,2);
+	return alan
 }
 
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
+console.log("Cemberin Alani:", CemberinAlani(15, pi));
 
 
 /* 	GÖREV 3:
@@ -71,42 +78,101 @@ function CemberinAlani(/* kodlar buraya */){
 	
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
+console.log("Toplam Sayı Adedi:", sayilar.length);
 
 
-	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
+
+	var ucetambolunenler, enkucuk, enbuyuk,  ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
 	
 	//3a çözümü
 
-	/* kodlar buraya */
+	//Ilk basta enkucuk ve enbuyuk deger sayilar dizisinin ilk elemanina esit olsun. for dongusunde eger daha kucuk veya daha buyuk bir deger bulunursa o degerle guncellensin.
+
+    enkucuk = sayilar[0];
+	enbuyuk = sayilar[0];  
+
+	for (let i = 0; i < sayilar.length; i++){
+		if (sayilar[i] < enkucuk) {
+			enkucuk = sayilar[i];
+		}
+		if (sayilar[i] > enbuyuk){
+			enbuyuk = sayilar[i];
+		}
+	}
+
+	console.log("En Buyuk Sayi:", enbuyuk);
+	console.log("En Kucuk Sayi:", enkucuk);
 	
 	
 	
 	// 3b çözümü:
 
-	/* kodlar buraya */
+	ucetambolunenler = []; // öncelikle boş bir dizi olusturduk
+
+	sayilar.forEach(function(sayi){
+		if (sayi % 3 === 0){
+			ucetambolunenler.push(sayi); 
+		//3e tam bolunen sayilari bos dizimize attik. 
+		}
+	});
+
+	console.log("3'e Tam Bolunenler:", ucetambolunenler);
 		
 		
 		
 	//3c çözümü:
 	
-	/* kodlar buraya */
+	ucebolunenlerintoplami = []; //bos dizi
+
+	ucebolunenlerintoplami = ucetambolunenler.reduce(function(toplam,sayi) {
+     return toplam + sayi;
+   },0); //baslangic degeri olarak 0 kullaniyoruz
+
+   console.log("3'e Tam Bolunenlerin Toplami:", ucebolunenlerintoplami);
 
 	
 	
 	//3d çözümü
 	
-	/* kodlar buraya */
+	besyuzdenkucuksayilar = []; //bos bir dizi olusturduk
+
+	besyuzdenkucuksayilar = sayilar.filter(function(sayi) {
+
+		return sayi < 500;
+	});
+
+	console.log("500'den Kucuk Sayilar:", besyuzdenkucuksayilar);
+
+
 
 
 
 	//3e çözümü
 
-	/* kodlar buraya */
+	siralisayilar = []; //bos dizimiz
+
+	siralisayilar = besyuzdenkucuksayilar.sort(function(a,b){
+
+		return a - b; 
+		//buyukten kucuge siralamak istesek b - a olacakti
+	});
+
+	console.log("Kucukten Buyuge Siralanmis Sayilar:", siralisayilar);
 	
 	
 	//3f çözümü
 	
-	/* kodlar buraya */
+	tekraredensayilar = []; //bos dizimiz
+
+	sayilar.sort(function(a,b){
+
+		return a - b; 
+	
+	});  // Diziyi kucukten buyuge sıralayarak aynı sayıların yan yana gelmesini sagladik.
+
+	
+
+
 
 
 
